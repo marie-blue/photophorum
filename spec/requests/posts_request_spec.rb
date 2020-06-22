@@ -5,46 +5,46 @@ RSpec.describe "Posts", type: :request do
 
   describe "GET index" do
     it "returns http success" do
-      get "/posts/index"
+      get "/topics/:topic_id/posts/index"
       expect(response).to have_http_status(:success)
     end
 
     it "assigns [my_post] to @posts" do
-      get "/posts/index"
+      get "/topics/:topic_id/posts/index"
       expect(assigns(:posts)).to eq([my_post])
     end
   end
 
   describe "GET show" do
     it "returns http success" do
-      get "/posts/show", params: { id: my_post.id }
+      get "/topics/:topic_id/posts/show", params: { id: my_post.id }
       expect(response).to have_http_status(:success)
     end
 
     it "renders the #show view" do
-      get "/posts/show", params: { id: my_post.id } 
+      get "/topics/:topic_id/posts/show", params: { id: my_post.id } 
       expect(response).to render_template :show
     end
 
     it "assigns my_post to @post" do
-      get "/posts/show", params: { id: my_post.id }
+      get "/topics/:topic_id/posts/show", params: { id: my_post.id }
       expect(assigns(:post)).to eq(my_post)
     end
   end
 
   describe "GET new" do
     it "returns http success" do
-      get "/posts/new"
+      get "/topics/:topic_id/posts/new"
       expect(response).to have_http_status(:success)
     end
 
     it "renders the #new view" do
-      get "/posts/new"
+      get "/topics/:topic_id/posts/new"
       expect(response).to render_template :new
     end
 
     it "instantiates @post" do
-      get "/posts/new"
+      get "/topics/:topic_id/posts/new"
       expect(assigns(:post)).not_to be_nil
     end
   end
@@ -55,7 +55,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     it "assigns the new post to @post" do
-      post :create, params: { post: { title: RandomData.random_sentense, body: RandomData.random_paragraph } }
+      post :create, params: { post: { title: RandomData.random_sentence, body: RandomData.random_paragraph } }
       expect(assigns(:post)).to eq Post.last
     end
 
@@ -68,17 +68,17 @@ RSpec.describe "Posts", type: :request do
 
   describe "GET edit" do
     it "returns http success" do
-      get "/posts/edit", params: { id: my_post.id }
+      get "/topics/:topic_id/posts/edit", params: { id: my_post.id }
       expect(response).to have_http_status(:success)
     end
 
     it "renders the #edit view" do
-      get "/posts/edit", params: { id: my_post.id }
+      get "/topics/:topic_id/posts/edit", params: { id: my_post.id }
       expect(response).to render_template :edit
     end
 
     it "assigns post to be updated to @post" do
-      get "/posts/edit", params: { id: my_post.id }
+      get "/topics/:topic_id/posts/edit", params: { id: my_post.id }
       post_instance = assigns(:post)
 
       expect(post_instance.id).to eq my_post.id
@@ -92,7 +92,7 @@ RSpec.describe "Posts", type: :request do
       new_title = RandomData.random_sentence
       new_body = RandomData.random_paragraph
 
-      put "/posts/update", params: { id: my_post.id, post: { title: new_title, body: new_body } }
+      put "/topics/:topic_id/posts/update", params: { id: my_post.id, post: { title: new_title, body: new_body } }
 
       updated_post = assigns(:post)
       expect(updated_post.id).to eq my_post.id
@@ -104,20 +104,20 @@ RSpec.describe "Posts", type: :request do
       new_title = RandomData.random_sentence
       new_body = RandomData.random_paragraph
 
-      put "/posts/update", params: { id: my_post.id, post: { title: new_title, body: new_body } }
+      put "/topics/:topic_id/posts/update", params: { id: my_post.id, post: { title: new_title, body: new_body } }
       expect(response).to redirect_to my_post
     end
   end
 
   describe "DELETE destroy" do
     it "deletes the post" do
-      delete "/posts/destroy", params: { id: my_post.id }
+      delete "/topics/:topic_id/posts/destroy", params: { id: my_post.id }
       count = Post.where({id: my_post.id}).size
       expect(count).to eq 0
     end
 
     it "redirects to posts index" do
-      delete "/posts/destroy", params: { id: my_post.id }
+      delete "/topics/:topic_id/posts/destroy", params: { id: my_post.id }
       expect(response).to redirect_to posts_path
     end
   end
