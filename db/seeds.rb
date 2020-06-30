@@ -28,18 +28,3 @@ puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
-
-Post.find_or_create_by!(
-    title: "This is my title",
-    body: "Here should be a body for my post"
-)
-p = Post.last
-
-puts "#{Post.count} posts created"
-
-
-Comment.find_or_create_by!(
-    post: p, body: "My comment"
-)
-
-puts "#{Comment.count} comments created"
