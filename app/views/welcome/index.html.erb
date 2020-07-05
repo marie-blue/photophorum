@@ -1,2 +1,24 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="jumbotron">
+  <h1>PhotoPhorum</h1>
+  <p>PhotoPhorum is a forum for Photocommunity!</p>
+  <p>
+  <%= link_to "Sign In", new_user_path%> or 
+  <%= link_to "Sign Up", new_user_path, class: 'btn btn-primary' %> today!
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <h2><a href="https://www.dpreview.com/interviews/2430888908/exclusive-sony-confirms-a7s-ii-successor-this-summer-everything-is-new">Sony a7S III to Have World’s Best EVF and New Cooling System: Report</h2></a>
+    <p>Sony has confirmed that the successor to the Sony a7S II -- presumably named the a7S III -- will be arriving "later this summer" with a complete revamp of the whole line, including the sensor. Now a new report says the camera will boast the worlds best electronic viewfinder (EVF) and a new cooling system.</p>
+  </div>
+  <div class="col-md-4"> 
+    <h2><a href="https://www.usa.canon.com/internet/portal/us/home/products/virtual-product-launch?cjevent=9fbfd565bedf11ea80bf026a0a240610&utm_medium=affiliate&utm_source=VigLink&utm_term=6149335&utm_campaign=hd19">It’s Official: Canon Schedules ‘Virtual Product Launch’ for July 9th at 8am ET</h2></a>
+    <p>After months of rumors and development announcements and price speculation and uncertainty about when exactly Canon would reveal the EOS R5 and EOS R6, we now have confirmation from the company itself: Canon has scheduled a "Virtual Product Launch" livestream for 8am Eastern Time on July 9th, right on schedule.</p>
+  </div>
+  <div class="col-md-4">
+    <h2><a href="https://learnandsupport.getolympus.com/olympus-om-d-webcam-beta">Olympus Unveils Webcam Software for OM-D Cameras, New Lens Roadmap</h2></a>
+    <p>Recent industry-shaking news aside, Olympus is not going anywhere just yet. In fact the company revealed an updated lens roadmap and released OM-D Webcam Beta Software: a Windows-only program that turns several of the most popular OM-D cameras into webcams for livestreaming and video conferencing.</p>
+  </div>
+</div>
+
