@@ -78,7 +78,7 @@ RSpec.describe "Topics", type: :request do
         end
 
         it "assigns topic to be updated to @topic" do
-            get "/topics/#{topic_id}/edit", params: {id: my_topic.id} 
+            get "/topics/edit", params: {id: my_topic.id} 
             topic_instance = assigns(:topic)
 
             expect(topic_instance.id).to eq my_topic.id
@@ -89,17 +89,17 @@ RSpec.describe "Topics", type: :request do
 
     describe "GET edit" do
         it "returns http success" do
-            get :edit, params: {id: my_topic.id}
+            get "/topics/edit", params: {id: my_topic.id}
             expect(response).to have_http_status(:success)
         end
 
         it "renders the #edit view" do
-            post :edit, params: {id: my_topic.id}
+            post "/topics/edit", params: {id: my_topic.id}
             expect(response).to render_template :edit
         end
 
         it "assigns topic to be updated to @topic" do
-            post :edit, params: {id: my_topic.id}
+            post "/topics/edit", params: {id: my_topic.id}
             topic_instance = assigns(:topic)
 
             expect(topic_instance.id).to eq my_topic.id
