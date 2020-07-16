@@ -6,7 +6,7 @@ RSpec.describe "Topics", type: :request do
     let(:my_topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
 
 
-    context "guess" do
+    context "guest" do
       describe "GET index" do
         it "returns http success" do
             get '/topics/'
