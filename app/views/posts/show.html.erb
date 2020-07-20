@@ -8,6 +8,13 @@
 <div class="row">
   <div class="col-md-8">
     <p><%= @post.body %></p>
+    <div class="form-group">
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image, style: "width: 500px; display: block" %>
+      <% end %>
+
+    </div>
+  
     <div>
       <h3>Comments</h3>
       <%= render @post.comments %>
