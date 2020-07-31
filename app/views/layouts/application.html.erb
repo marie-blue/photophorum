@@ -12,26 +12,25 @@
 
   <body>
     <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <%= link_to "PhotoPhorum", root_path, :class => "navbar-brand" %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <image src="/images/Logo.png", alt="Logo", style="width: 140px">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <ul class="nav navbar-nav ">
+          <li class="nav-item nav-link"><%= link_to "Topics", topics_path, :class => "nav-link"%><span class="sr-only">(current)</span></li>
+          <li class="nav-item nav-link"><%= link_to "About", about_path, :class => "nav-link"%><span class="sr-only">(current)</span></li>
+          </ul>
+        <% if current_user %>
+          <li class="nav-item nav-link"><%= link_to "#{current_user.name} - Sign Out", session_path(current_user), method: :delete, :class => "nav-link"%></li>
+        <% else %>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to "Sign In", new_session_path %></li>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><%= link_to "Sign Up", new_user_path %></li>
+        <% end %>
+        
+      </nav>
+    </div>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-      <%= link_to "Topics", topics_path, :class => "nav-link"%><span class="sr-only">(current)</span></li>
-      <%= link_to "About", about_path, :class => "nav-link"%><span class="sr-only">(current)</span></li>
-    </ul>
-    <% if current_user %>
-      <li class="pull-right"><%= link_to "#{current_user.name} - Sign Out", session_path(current_user), method: :delete %></li>
-    <% else %>
-      <li class="pull-right"><%= link_to "Sign In", new_session_path %></li>
-      <li class="pull-right"><%= link_to "Sign Up", new_user_path %></li>
-    <% end %>
-  </div>
-</nav>
 
      <% if flash[:notice] %>
        <div class="alert alert-success">

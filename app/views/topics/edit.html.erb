@@ -1,16 +1,17 @@
-<h1> Edit Topic </h1>
+<div class="container">
+  <h1> Edit Topic </h1>
 
-<div class="row">
-  <div class="col-md-4">
-    <p> Guidelines for topics:</p>
-      <ul>
-        <li>Make sure the topic is appropriate.</li>
-        <li>Be brief.</li>
-        <li>Do not make same topic theme.</li>
-      </ul>
-  </div>
-  <div class="col-md-8">
-    <%= render partial: 'form', locals: { topic: @topic } %>
+  <div class="row">
+    <div class="col-md-4">
+      <p> Guidelines for topics:</p>
+        <ul>
+          <li>Make sure the topic is appropriate.</li>
+          <li>Be brief.</li>
+          <li>Do not make same topic theme.</li>
+        </ul>
+    </div>
+    <div class="col-md-8">
+      <%= render partial: 'form', locals: { topic: @topic } %>
+    </div>
   </div>
 </div>
-    
