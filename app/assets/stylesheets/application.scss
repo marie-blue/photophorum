@@ -38,6 +38,8 @@
   }
   
   html {
+    position: relative;
+    min-height: 100%;
     font-family: sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -49,7 +51,7 @@
   }
   
   body {
-    margin: 0;
+    margin: 0 0 100px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
     font-weight: 400;
@@ -57,6 +59,11 @@
     color: #495057;
     text-align: left;
     background-color: #fff;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
   }
   
   [tabindex="-1"]:focus:not(:focus-visible) {
@@ -532,6 +539,10 @@
     word-break: normal;
   }
   
+  .content {
+    min-height: calc(100vh - 20px);
+  }
+
   .pre-scrollable {
     max-height: 340px;
     overflow-y: scroll;
@@ -5609,15 +5620,17 @@
             box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
   }
   
-  .jumbotron {
+ *.jumbotron {
     padding: 2rem 1rem;
     margin-top:20px;
     margin-bottom: 2rem;
-    background-image: url('../images/1.jpg');
+    background-image: url('app/assets/images/about.jpg');
     background-size: cover;
+    background-color: red($color: #000000);
     background-repeat: no-repeat;
     border-radius: 0.3rem;
   }
+
   
   @media (min-width: 576px) {
     .jumbotron {
@@ -10708,6 +10721,10 @@
     word-wrap: break-word !important;
   }
   
+  .footer {
+    margin-top: auto;
+  }
+  
   .text-reset {
     color: inherit !important;
   }
@@ -10825,6 +10842,7 @@
   
   .btn {
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    margin-top: 2;
   }
   
   .btn-primary {

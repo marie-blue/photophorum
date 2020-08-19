@@ -1,35 +1,43 @@
-<div class="container">
-<h1>
-  <%= @post.title %> <br>
-    <small>
-      submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
-    </small>
-</h1>
+<div class="container mt-1 mb-2">
+  <div class="row">
+    <div class="col-md-8">
+      <section class="card">
+        <div class="card-body">
+          <h1 class="card-title">
+            <%= @post.title %></h1><br>
+            <small>submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %></small>
 
-<div class="row">
-  <div class="col-md-8">
-    <p><%= @post.body %></p>
-    <div class="form-group">
-    <% if @post.image.attached? %>
-      <%= image_tag @post.image, style: "width: 500px; display: block" %>
-      <% end %>
-
+          <p class="card-text "><%= @post.body %></p>
+          <div class="card-img">
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image, style: "width: 675px;" %>
+            <% end %>
+          </div>
+          <div>
+            <% if user_is_authorized_for_post?(@post) %>
+              <%= link_to "Edit", edit_topic_post_path(@post.topic, @post), class: 'btn btn-success' %>
+              <%= link_to "Delete Post", [@post.topic, @post], method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this post?'} %> 
+            <% end %> 
+          </div>
+          <h3 class="card-subtitle mt-2">Comments</h3>
+            <%= render @post.comments %>
+            <% if current_user %>
+              <%= render 'comments/form', comment: Comment.new, post: @post %>
+            <% end %>
+        </div>
+      </section>
     </div>
-  
-    <div>
-      <h3>Comments</h3>
-      <%= render @post.comments %>
+    <div class="col-md-4">
+      <section class="card">
+        <div class="card-body">
+          <h1 class="card-title">Place for your advertisement</h1>
+          <div class="card-img img-fluid mb-2">
+          <%= image_tag ("ad.jpg"), class:"card-img mb-2"%>
+          <%= image_tag ("ad.jpg"), class:"card-img mb-2"%>
+          <%= image_tag ("ad.jpg"), class:"card-img mb-2"%>
+          </div>
+        </div>
+      </section>
     </div>
-    <% if current_user %>
-      <%= render 'comments/form', comment: Comment.new, post: @post %>
-    <% end %>
   </div>
-  <% if user_is_authorized_for_post?(@post) %>
-  <div class="col-md-4">
-    <%= link_to "Edit", edit_topic_post_path(@post.topic, @post), class: 'btn btn-success' %>
-    <%= link_to "Delete Post", [@post.topic, @post], method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this post?'} %> 
-  </div>
-  <% end %> 
 </div>
-</div>
-
