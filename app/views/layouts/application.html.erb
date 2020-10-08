@@ -1,106 +1,109 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Photophorum</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-  </head>
+<head>
+  <title>Photophorum</title>
+  <link rel = "icon" href ="images/smlogo.png" type = "image/x-icon">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-  <div class="content">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body class="d-flex flex-column">
+ <div class="content">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
       <div class="container">
         <%= link_to root_path do %>
-          <%= image_tag ("Logo.png"), style:"width: 140px", class:"navbar-brand"%>
+        <%= image_tag ("Logo.png"), style:"width: 140px", class:"navbar-brand"%>
         <% end %>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+          aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item nav-link"><%= link_to "Topics", topics_path, :class => "nav-link"%><span class="sr-only">(current)</span></li>
-              <li class="nav-item nav-link"><%= link_to "About", about_path, :class => "nav-link"%><span class="sr-only">(current)</span></li>
-      
-              <% if current_user %>
-                <li class="nav-item nav-link"><%= link_to "#{current_user.name} - Sign Out", session_path(current_user), method: :delete, :class => "nav-link"%></li>
-              <% else %>
-                <li class="nav-item nav-link"><%= link_to "Sign In", new_session_path, :class => "nav-link"%><span class="sr-only">(current)</span></li>
-                <li class="nav-item nav-link"><%= link_to "Sign Up", new_user_path, :class => "nav-link"%><span class="sr-only">(current)</span></li>
-              <% end %>
-            </ul>
-          </div>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item nav-link"><%= link_to "Topics", topics_path, :class => "nav-link"%><span
+                class="sr-only">(current)</span></li>
+            <li class="nav-item nav-link"><%= link_to "About", about_path, :class => "nav-link"%><span
+                class="sr-only">(current)</span></li>
+
+            <% if current_user %>
+            <li class="nav-item nav-link">
+              <%= link_to "#{current_user.name} - Sign Out", session_path(current_user), method: :delete, :class => "nav-link"%>
+            </li>
+            <% else %>
+            <li class="nav-item nav-link"><%= link_to "Sign In", new_session_path, :class => "nav-link"%><span
+                class="sr-only">(current)</span></li>
+            <li class="nav-item nav-link"><%= link_to "Sign Up", new_user_path, :class => "nav-link"%><span
+                class="sr-only">(current)</span></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container">
       <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
-        </div>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
       <% elsif flash[:alert] %>
-        <div class="alert alert-warning">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert] %>
-        </div>
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
       <% end %>
       <%= yield %>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    </div>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+  </div>
 
-  
-  <footer class="page-footer font-small bg-primary">
-    <div class="container">
-      <div class="container-fluid text-center text-md-left">
-        <div class="row">
-          <div class="col-md-6 mt-md-4 mt-3">
-            <h5>PhotoPhorum</h5>
-              <p>Everything, what you need to know about photography.We are passion photographer and web developer. Decided to mix our passions into one usefull web site!</p>
+
+  <footer class="page-footer  container-fluid">
+    <nav class="navbar fixed-bottom font-small bg-primary">
+      <div class="container">
+        <div class="container-fluid text-center text-md-left">
+          <div class="row">
+            <div class="col-md-6 mt-md-4 mt-3">
+              <h5>PhotoPhorum</h5>
+              <p>Everything, what you need to know about photography.We, passion photographer and web developer, decided to mix our passions into one usefull web site!</p>
+            </div>
+            <hr class="clearfix w-100 d-md-none pb-3">
+            <div class="col-md-3 mt-md-6 mt-3">
+              <h5 class="text-center">Links</h5>
+              <ul class="list-unstyled text-center text-light">
+                <li class="nav-item "><%= link_to "Topics", topics_path, :class => "text-light"%></li>
+                <li class="nav-item "><%= link_to "About", about_path, :class => "text-light"%></li>
+                <li class="nav-item "><%= link_to "Sign In", new_session_path, :class => "text-light"%></li>
+                <li class="nav-item "><%= link_to "Sign Up", new_user_path, :class => "text-light"%></li>
+              </ul>
+            </div>
+            <div class="col-md-3 mt-md-6 mt-3">
+              <h5 class="text-center">Contact</h5>
+              <p> Brooklyn, NY 11235, US</p>
+              <p> info@photophorum.com</p>
+              <p> + 01 234 567 88</p>
+            </div>
           </div>
-        <hr class="clearfix w-100 d-md-none pb-3">
-      <div class="col-md-3 mt-md-6 mt-3">
-        <h5 class="text-center">Links</h5>
-          <ul class="list-unstyled text-center text-light">
-            <li class="nav-item "><%= link_to "Topics", topics_path, :class => "text-light"%></li>
-            <li class="nav-item "><%= link_to "About", about_path, :class => "text-light"%></li>
-            <li class="nav-item "><%= link_to "Sign In", new_session_path, :class => "text-light"%></li>
-            <li class="nav-item "><%= link_to "Sign Up", new_user_path, :class => "text-light"%></li>
-          </ul>
+        </div>
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+          <a href="https://www.linkedin.com/in/marie-blue/" class="text-light"> Marie Blue</a>
+        </div>
       </div>
-      <div class="col-md-3 mt-md-6 mt-3">
-        <h5 class="text-center">Contact</h5>
-        <p>
-          <i class="fas fa-home mr-3"></i> Brooklyn, NY 11235, US</p>
-        <p>
-          <i class="fas fa-envelope mr-3"></i> info@photophorum.com</p>
-        <p>
-          <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-  
-
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-
-  </div>
-  <!-- Footer Links -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://www.linkedin.com/in/marie-blue/" class="text-light"> Marie Blue</a>
-  </div>
-  <!-- Copyright -->
-  </div>
+    </nav>
   </footer>
-  </body>
-  
+</body>
+</html>

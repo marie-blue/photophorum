@@ -10,7 +10,7 @@
           <p class="card-text "><%= @post.body %></p>
           <div class="card-img">
             <% if @post.image.attached? %>
-              <%= image_tag @post.image, style: "width: 675px;" %>
+              <%= image_tag @post.image,  class:"card-img img-fluid mb-4 mt-2" %>
             <% end %>
           </div>
           <div>
@@ -32,9 +32,9 @@
         <div class="card-body">
           <h1 class="card-title">Place for your advertisement</h1>
           <div class="card-img img-fluid mb-2">
+          <%= image_tag ("ad2.jpg"), class:"card-img mb-2"%>
           <%= image_tag ("ad.jpg"), class:"card-img mb-2"%>
-          <%= image_tag ("ad.jpg"), class:"card-img mb-2"%>
-          <%= image_tag ("ad.jpg"), class:"card-img mb-2"%>
+          <%= image_tag ("ad5.jpg"), class:"card-img mb-2"%>
           </div>
         </div>
       </section>

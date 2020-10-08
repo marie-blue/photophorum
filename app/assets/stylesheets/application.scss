@@ -60,12 +60,8 @@
     text-align: left;
     background-color: #fff;
 
-    min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
   }
-  
+
   [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
   }
@@ -540,7 +536,7 @@
   }
   
   .content {
-    min-height: calc(100vh - 20px);
+    flex-grow: 1;
   }
 
   .pre-scrollable {
@@ -5632,7 +5628,7 @@
   }
 
   
-  @media (min-width: 576px) {
+  @media (min-width: 992px) {
     .jumbotron {
       padding: 4rem 2rem;
       
@@ -10720,7 +10716,7 @@
   .text-break {
     word-wrap: break-word !important;
   }
-  
+
   .footer {
     margin-top: auto;
   }
