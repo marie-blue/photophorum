@@ -11,15 +11,25 @@
             <% end %>
 
           <p class="card-text "><%= @topic.description %></p>
+
+           <% if current_user %>
+            <div class="col-md-8">
+              <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
+            </div>
+          <% end %>
           
           <% @topic.posts.each do |post| %>
             <br><%= link_to post.title, topic_post_path(@topic, post), class:"card-subtitle mt-4 mb-2" %>
               <% if post.image.attached? %>
                 <%= image_tag post.image, class:"card-img img-fluid mb-4 mt-2" %>
               <% end %>
-            
-            <% end %>
-        </div>
+              <small>
+                submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br>
+                <%= post.comments.count %> Comments
+              </small>
+          <% end %>
+         
+       </div>
       </section>
     </div>
     <div class="col-md-4">
